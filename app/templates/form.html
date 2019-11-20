@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+	<form class="col s6" action="" method="POST" novalidate>
+        {{form.csrf_token}}
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">account_circle</i>
+                {{form.username(id="icon_prefix")}}
+				<label for="icon_prefix">Informe seu usuario</label>
+                {% if form.errors.username %}
+
+                <ul>
+                {% for e in form.erros.username %}
+                    <span class="red-text text-darken-2">{{e}}</span>
+
+                {%endfor%}
+                </ul>
+       
+                {%endif%}
+			</div>
+			<div class="input-field col s12">
+				<i class="material-icons prefix">phone</i>
+				 {{form.password( id="icon_password")}}
+				<label for="icon_password">Informe sua senha</label>
+                   {% if form.errors.password %}
+                  <ul>
+                {% for e in form.erros.password %}
+                    <span class="red-text text-darken-2">{{e}}</span>
+
+                {%endfor%}
+                </ul>
+                {%endif%}
+			</div>
+
+            <div class="input-field col s12">
+				 <p>
+                <label>
+                    {{form.remember_me(class="validade", id="icon_password")}}
+                    <span>Lembrar minha senha</span>
+                </label>
+                </p>
+            </div>
+
+            <div class="input-field col s12">
+				
+                <button type="submit" class="waves-effect waves-light btn">Logar</button>
+
+            </div>
+
+            
+		</div>
+	</form>
+</div>
+
+{% endblock %}
